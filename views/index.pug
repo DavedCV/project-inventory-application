@@ -1,5 +1,17 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  div(class="content")
+    h2= title
+    if items.length 
+      div(class="items")
+        ul 
+          each item in items 
+            li 
+              div(class="item-card")
+                h3 
+                  a(href=item.url)= item.name
+                p #[strong Category]: #{item.category.name}
+                p #[strong Price]: #{item.price}
+    else 
+      p No items in inventory
