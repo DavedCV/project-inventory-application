@@ -30,7 +30,7 @@ router.post("/item/create", itemController.createPost);
 // GET page to update an item
 router.get("/item/update/:id", itemController.updateGet);
 // POST page request to update an item
-// router.post("/item/update/:id", itemController.updatePost);
+router.post("/item/update/:id", itemController.updatePost);
 
 // GET page to get an item by id
 router.get("/item/:id", itemController.getById);
