@@ -18,9 +18,9 @@ const vendorController = require("../controllers/vendorController");
 router.get("/item", itemController.getAll);
 
 // GET page to create an item
-// router.get("/item/create", itemController.createGet);
+router.get("/item/create", itemController.createGet);
 // POST page request to create an item
-// router.post("/item/create", itemController.createPost);
+router.post("/item/create", itemController.createPost);
 
 // GET page to delete an item
 // router.get("/item/delete/:id", itemController.deleteGet);

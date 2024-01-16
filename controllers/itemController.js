@@ -29,3 +29,28 @@ exports.getById = asyncHandler(async (req, res, next) => {
 
   res.render("itemDetails", { title: "Item Details", item: item });
 });
+
+exports.createGet = asyncHandler(async (req, res, next) => {
+  const categories = await Category.find().exec();
+  const vendors = await Vendor.find().exec();
+
+  res.render("itemForm", {
+    title: "Create Item",
+    categories: categories,
+    vendors: vendors,
+  });
+});
+
+exports.createPost = asyncHandler(async (req, res, next) => {
+  const item = new Item({
+    name: req.body.name,
+    description: req.body.description,
+    category: req.body.category,
+    price: req.body.price,
+    stock: req.body.stock,
+    vendor: req.body.vendor,
+  });
+
+  await item.save();
+  res.redirect(item.url);
+});
