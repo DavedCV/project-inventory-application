@@ -15,7 +15,7 @@ block content
       ul 
         li 
           label(for="name") Name:
-          input(type="text" name="name", required, value=(item ? item.author : ""))
+          input(type="text" name="name", required, value=(item ? item.name : ""))
         li 
           label(for="category") Category:
           select(name="category", required)
@@ -48,9 +48,9 @@ block content
                 option(value=vendor._id) #{vendor.name} 
         li 
           label(for="description") Description:
-          textarea(name="description", required, value=(item ? item.description : ""))
+          textarea(name="description", required) #{item ? item.description : ""}
 
-      button(type="submit") Create Item
+      button(type="submit") Item Ready
 
       if erros    
         ul 

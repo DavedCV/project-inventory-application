@@ -54,3 +54,37 @@ exports.createPost = asyncHandler(async (req, res, next) => {
   await item.save();
   res.redirect(item.url);
 });
+
+exports.updateGet = asyncHandler(async (req, res, next) => {
+  const itemId = req.params.id;
+
+  const item = await Item.findById(itemId)
+    .populate("category")
+    .populate("vendor")
+    .exec();
+
+  const vendors = await Vendor.find().exec();
+  const categories = await Category.find().exec();
+
+  res.render("itemForm", {
+    title: "Update Item",
+    item: item,
+    categories: categories,
+    vendors: vendors,
+  });
+});
+
+exports.updatePost = asyncHandler(async (req, res, next) => {
+  const item = new Item({
+    name: req.body.name,
+    description: req.body.description,
+    category: req.body.category,
+    price: req.body.price,
+    stock: req.body.stock,
+    vendor: req.body.vendor,
+    _id: req.params.id,
+  });
+
+  const updateItem = await Item.findByIdAndUpdate(req.params.id, item, {});
+  res.redirect(updateItem.url);
+});

@@ -92,6 +92,11 @@ body {
   gap: 0.5rem;
   list-style: none;
   padding: 1rem;
+  width: 50%;
+}
+
+.nav-items li {
+  text-align: center;
 }
 
 .nav-items a {
