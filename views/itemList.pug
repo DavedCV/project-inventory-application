@@ -1,0 +1,24 @@
+extends layout 
+
+block section
+  h2 Items
+  ul 
+    li 
+      a(href="/catalog/item") All Items
+    li
+      a(href="/catalog/item/create") Create New Item
+block content
+  div(class="content")
+    h2= title
+    if items.length 
+      div(class="items")
+        ul 
+          each item in items 
+            li 
+              div(class="item-card")
+                h3 
+                  a(href=item.url)= item.name
+                p #[strong Category]: #{item.category.name}
+                p #[strong Price]: #{item.price}
+    else 
+      p No items in inventory
