@@ -1,0 +1,21 @@
+extends layout 
+
+block section
+  h2 Items
+  ul 
+    li 
+      a(href="/catalog/item") All Items
+    li
+      a(href="/catalog/item/create") Create New Item
+
+block content 
+  div(class="content")
+    h2 #{title}: #{item.name}
+    if item 
+      p #[strong Category: ] #{item.category.name}
+      p #[strong Price: ] #{item.price}
+      p #[strong Number in Stock: ] #{item.stock}
+      p #[strong Vendor: ] #{item.vendor.name}
+      p #[strong Description: ] #{item.description}
+    else 
+      p #[strong No item found.]

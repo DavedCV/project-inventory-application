@@ -15,14 +15,16 @@ body {
   grid-template-areas: "nav nav nav"
     "section section section"
     "content content content";
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: auto auto 1fr;
-    gap: 1rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto auto 1fr;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
 }
 
 .section {
   grid-area: section;
-  background-color: var(--s-blue);
+  background-color: var(--p-blue);
   display: flex;
   justify-content: center;
 
@@ -36,6 +38,14 @@ body {
 
 .section ul {
   color: var(--white);
+}
+
+.section a {
+  text-decoration: none;
+}
+
+.section a:is(:hover, :active) {
+  text-decoration: underline;
 }
 
 .content {
@@ -58,7 +68,7 @@ body {
 
 .nav>h1 {
   text-transform: uppercase;
-  border-bottom: 1px solid var(--white);
+  border-bottom: 2px solid var(--white);
   margin: 0;
   padding-block: 1rem;
 }
@@ -131,4 +141,11 @@ body {
 
 .item-card a:is(:active, :hover) {
   text-decoration: underline;
+}
+
+.item-card .item-card-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }

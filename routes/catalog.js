@@ -33,7 +33,7 @@ router.get("/item", itemController.getAll);
 // router.post("/item/update/:id", itemController.updatePost);
 
 // GET page to get an item by id
-// router.get("/item/:id", itemController.getById);
+router.get("/item/:id", itemController.getById);
 
 // Export router ---------------------------------------------------------------
 

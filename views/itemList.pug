@@ -7,6 +7,7 @@ block section
       a(href="/catalog/item") All Items
     li
       a(href="/catalog/item/create") Create New Item
+      
 block content
   div(class="content")
     h2= title
@@ -20,5 +21,9 @@ block content
                   a(href=item.url)= item.name
                 p #[strong Category]: #{item.category.name}
                 p #[strong Price]: #{item.price}
+
+                div(class="item-card-actions")
+                  i(class="fa-solid fa-pen-to-square")
+                  i(class="fa-solid fa-trash")
     else 
       p No items in inventory
