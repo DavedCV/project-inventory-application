@@ -1,4 +1,3 @@
-const { ExpressValidator } = require("express-validator");
 const Category = require("../models/Category");
 const Item = require("../models/Item");
 

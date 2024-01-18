@@ -64,9 +64,32 @@ router.post("/category/update/:id", categoryController.updatePost);
 router.get("/category/:id", categoryController.getById);
 
 // VENDOR ROUTES ---------------------------------------------------------------
+// - get all vendors
+// - create a vendor
+// - delete a vendor
+// - update a vendor
+// - get a vendor by id
 
 // GET all vendors catalog
+router.get("/vendor", vendorController.getAll);
 
+// GET create a vendor
+router.get("/vendor/create", vendorController.createGet);
+// POST create a vendor
+router.post("/vendor/create", vendorController.createPost);
+
+// GET to delete a vendor
+router.get("/vendor/delete/:id", vendorController.deleteGet);
+// POST to delete a vendor
+router.post("/vendor/delete/:id", vendorController.deletePost);
+
+// GET to update a vendor
+router.get("/vendor/update/:id", vendorController.updateGet);
+// POST to update a vendor
+router.post("/vendor/update/:id", vendorController.updatePost);
+
+// GET vendor by id
+router.get("/vendor/:id", vendorController.getById);
 
 // Export router ---------------------------------------------------------------
 

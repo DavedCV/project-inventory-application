@@ -243,13 +243,14 @@ li textarea {
   flex-direction: column;
 }
 
-.delete > p,
-.delete > h2 {
+.delete>p,
+.delete>h2 {
   text-transform: uppercase;
   text-align: center;
 }
 
-.categories {
+.categories,
+.vendors {
   display: flex;
   flex-direction: column;
   justify-content: stretch;
@@ -259,7 +260,8 @@ li textarea {
   width: 70%;
 }
 
-.categories > ul {
+.categories>ul,
+.vendors>ul {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -268,31 +270,35 @@ li textarea {
   width: 100%;
 }
 
-.categories .category-card {
+.categories .category-card,
+.vendors .vendor-card {
   background-color: var(--s-blue);
   color: var(--white);
   padding: 1rem;
 }
 
-.category-card a {
+.category-card a,
+.vendor-card a {
   color: var(--white);
   text-decoration: none;
 }
 
-.category-card a:is(:hover, :active) {
+.category-card a:is(:hover, :active),
+.vendor-card a:is(:hover, :active) {
   text-decoration: underline;
 }
 
-.category-card h3 {
+.category-card h3,
+.vendor-card h3 {
   text-align: center;
   padding-bottom: 1rem;
   border-bottom: 2px solid var(--white);
 }
 
-.category-card .category-card-actions {
+.category-card .category-card-actions,
+.vendor-card .vendor-card-actions {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1rem;
 }
-
