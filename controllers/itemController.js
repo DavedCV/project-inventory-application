@@ -88,3 +88,23 @@ exports.updatePost = asyncHandler(async (req, res, next) => {
   const updateItem = await Item.findByIdAndUpdate(req.params.id, item, {});
   res.redirect(updateItem.url);
 });
+
+exports.deleteGet = asyncHandler(async (req, res, next) => {
+  const itemId = req.params.id;
+
+  const item = await Item.findById(itemId).exec();
+
+  if (item == null) {
+    const err = new Error("Item not found");
+    err.status = 404;
+    return next(err);
+  }
+
+  res.render("itemDelete", { title: "Delete Item", item: item });
+});
+
+exports.deletePost = asyncHandler(async (req, res, next) => {
+  const itemId = req.params.id;
+  await Item.findByIdAndDelete(itemId);
+  res.redirect("/catalog/item");
+});

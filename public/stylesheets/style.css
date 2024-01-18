@@ -228,3 +228,16 @@ li textarea {
   border: none;
   outline: none;
 }
+
+.delete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.delete > p,
+.delete > h2 {
+  text-transform: uppercase;
+  text-align: center;
+}
