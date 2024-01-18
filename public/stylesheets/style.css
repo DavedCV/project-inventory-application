@@ -64,6 +64,13 @@ body {
   align-items: center;
 }
 
+.home {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 2rem;
+  text-align: center;
+}
+
 .nav {
   height: min-content;
 

@@ -2,16 +2,7 @@ extends layout
 
 block content
   div(class="content")
-    h2= title
-    if items.length 
-      div(class="items")
-        ul 
-          each item in items 
-            li 
-              div(class="item-card")
-                h3 
-                  a(href=item.url)= item.name
-                p #[strong Category]: #{item.category.name}
-                p #[strong Price]: #{item.price}
-    else 
-      p No items in inventory
+    div(class="home")
+      p Welcome to the Inventory Management System
+      p This is a simple inventory management system that allows you to create, read, update, and delete items from your inventory.
+      p Please use the navigation bar to get started.
