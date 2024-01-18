@@ -1,5 +1,6 @@
 const { ExpressValidator } = require("express-validator");
 const Category = require("../models/Category");
+const Item = require("../models/Item");
 
 const asyncHandler = require("express-async-handler");
 
@@ -26,9 +27,21 @@ exports.deleteGet = asyncHandler(async (req, res, next) => {
 exports.deletePost = asyncHandler(async (req, res, next) => {
   const categoryId = req.params.id;
 
-  await Category.findByIdAndDelete(categoryId).exec();
+  const [associatedItems, category] = await Promise.all([
+    Item.find({ category: categoryId }).exec(),
+    Category.findById(categoryId).exec(),
+  ]);
 
-  res.redirect("/catalog/category");
+  if (associatedItems.length > 0) {
+    res.render("categoryDelete", {
+      title: "Delete Category",
+      category: category,
+      error: true,
+    });
+  } else {
+    await Category.findByIdAndDelete(categoryId).exec();
+    res.redirect("/catalog/category");
+  }
 });
 
 exports.createGet = asyncHandler(async (req, res, next) => {

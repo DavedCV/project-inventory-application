@@ -12,10 +12,13 @@ block content
   div(class="content")
     h2 #{title}
     div(class="delete")
-      h2 #{category.name}
-      if category 
-        p #[strong Are you sure you want to delete this category?]
-        form(method="POST")
-          button(type="submit") Delete Category
+      if !error
+        h2 #{category.name}
+        if category 
+          p #[strong Are you sure you want to delete this category?]
+          form(method="POST")
+            button(type="submit") Delete Category
+        else 
+          p #[strong No Category found.]
       else 
-        p #[strong No Category found.]
+        p #[strong There are associated items with this category.]

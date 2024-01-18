@@ -63,6 +63,11 @@ router.post("/category/update/:id", categoryController.updatePost);
 // GET specific category
 router.get("/category/:id", categoryController.getById);
 
+// VENDOR ROUTES ---------------------------------------------------------------
+
+// GET all vendors catalog
+
+
 // Export router ---------------------------------------------------------------
 
 module.exports = router;
