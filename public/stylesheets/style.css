@@ -130,7 +130,7 @@ body {
 }
 
 .content>.items {
-  width: 100%;
+  width: 70%;
 }
 
 .content>.items>ul {
@@ -248,3 +248,51 @@ li textarea {
   text-transform: uppercase;
   text-align: center;
 }
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  align-items: center;
+  flex-wrap: wrap;
+
+  width: 70%;
+}
+
+.categories > ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding: 0;
+  width: 100%;
+}
+
+.categories .category-card {
+  background-color: var(--s-blue);
+  color: var(--white);
+  padding: 1rem;
+}
+
+.category-card a {
+  color: var(--white);
+  text-decoration: none;
+}
+
+.category-card a:is(:hover, :active) {
+  text-decoration: underline;
+}
+
+.category-card h3 {
+  text-align: center;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--white);
+}
+
+.category-card .category-card-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+

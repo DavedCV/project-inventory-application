@@ -35,6 +35,15 @@ router.post("/item/update/:id", itemController.updatePost);
 // GET page to get an item by id
 router.get("/item/:id", itemController.getById);
 
+// CATEGORY ROUTES -------------------------------------------------------------
+// - get all categories
+// - create a category
+// - delete a category
+// - update a category
+
+// GET all categories catalog
+router.get("/category", categoryController.getAll);
+
 // Export router ---------------------------------------------------------------
 
 module.exports = router;
