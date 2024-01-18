@@ -1,0 +1,20 @@
+extends layout 
+
+block section
+  h2 Categories
+  ul 
+    li 
+      a(href="/catalog/category") All Categories
+    li
+      a(href="/catalog/category/create") Create New Category
+
+block content 
+  div(class="content")
+    h2 #{title}
+    div(class="details")
+      h2 #{category.name}
+      if category 
+        p #[strong Name: ] #{category.name}
+        p #[strong Description: ] #{category.description}
+      else 
+        p #[strong No Category found.]

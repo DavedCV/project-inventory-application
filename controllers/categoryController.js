@@ -26,11 +26,54 @@ exports.deleteGet = asyncHandler(async (req, res, next) => {
 exports.deletePost = asyncHandler(async (req, res, next) => {
   const categoryId = req.params.id;
 
-  const category = await Category.findByIdAndDelete(categoryId).exec();
+  await Category.findByIdAndDelete(categoryId).exec();
 
   res.redirect("/catalog/category");
 });
 
-exports.createGet = asyncHandler(async (req, res, next) => {});
+exports.createGet = asyncHandler(async (req, res, next) => {
+  res.render("categoryForm", {
+    title: "Create Category",
+  });
+});
 
-exports.createPost = asyncHandler(async (req, res, next) => {});
+exports.createPost = asyncHandler(async (req, res, next) => {
+  const category = new Category({
+    name: req.body.name,
+    description: req.body.description,
+  });
+
+  await category.save();
+  res.redirect(category.url);
+});
+
+exports.getById = asyncHandler(async (req, res, next) => {
+  const categoryId = req.params.id;
+  const category = await Category.findById(categoryId).exec();
+
+  res.render("categoryDetails", {
+    title: "Category Details",
+    category: category,
+  });
+});
+
+exports.updateGet = asyncHandler(async (req, res, next) => {
+  const categoryId = req.params.id;
+  const category = await Category.findById(categoryId).exec();
+
+  res.render("categoryForm", {
+    title: "Update Category",
+    category: category,
+  });
+});
+
+exports.updatePost = asyncHandler(async (req, res, next) => {
+  const category = new Category({
+    name: req.body.name,
+    description: req.body.description,
+    _id: req.params.id,
+  });
+
+  await Category.findByIdAndUpdate(req.params.id, category).exec();
+  res.redirect(category.url);
+});

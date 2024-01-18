@@ -40,19 +40,28 @@ router.get("/item/:id", itemController.getById);
 // - create a category
 // - delete a category
 // - update a category
+// - get a category by id
 
 // GET all categories catalog
 router.get("/category", categoryController.getAll);
+
+// GET create a category
+router.get("/category/create", categoryController.createGet);
+// POST create a category
+router.post("/category/create", categoryController.createPost);
 
 // GET to delete a category
 router.get("/category/delete/:id", categoryController.deleteGet);
 // POST to delete a category
 router.post("/category/delete/:id", categoryController.deletePost);
 
-// GET create a category
-router.get("/category/create", categoryController.createGet);
-// POST create a category
-router.post("/category/create", categoryController.createPost);  
+// GET to update a category
+router.get("/category/update/:id", categoryController.updateGet);
+// POST to update a category
+router.post("/category/update/:id", categoryController.updatePost);
+
+// GET specific category
+router.get("/category/:id", categoryController.getById);
 
 // Export router ---------------------------------------------------------------
 
