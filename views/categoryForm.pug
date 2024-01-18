@@ -1,0 +1,58 @@
+extends layout 
+
+block section
+  h2 Items
+  ul 
+    li 
+      a(href="/catalog/item") All Items
+    li
+      a(href="/catalog/item/create") Create New Item
+
+block content 
+  div(class="content")
+    h2 #{title}
+    form(method="POST")
+      ul 
+        li 
+          label(for="name") Name:
+          input(type="text" name="name", required, value=(item ? item.name : ""))
+        li 
+          label(for="category") Category:
+          select(name="category", required)
+            option(value="") --Please Select a Category--
+            each category in categories
+              if item 
+                if item.category._id.toString() === category._id.toString()
+                  option(value=category._id, selected) #{category.name}
+                else 
+                  option(value=category._id) #{category.name}
+              else  
+                option(value=category._id) #{category.name}
+        li 
+          label(for="price") Price:
+          input(type="number" name="price", required, value=(item ? item.price : ""))
+        li 
+          label(for="stock") Number in Stock:
+          input(type="number" name="stock", required, value=(item ? item.stock : ""))
+        li 
+          label(for="vendor") Vendor:
+          select(name="vendor", required)
+            option(value="") --Please Select a Vendor--
+            each vendor in vendors
+              if item 
+                if item.vendor._id.toString() === vendor._id.toString()
+                  option(value=vendor._id, selected) #{vendor.name}
+                else 
+                  option(value=vendor._id) #{vendor.name}
+              else  
+                option(value=vendor._id) #{vendor.name} 
+        li 
+          label(for="description") Description:
+          textarea(name="description", required) #{item ? item.description : ""}
+
+      button(type="submit") Item Ready
+
+      if erros    
+        ul 
+          each error in errors
+            li= error.msg

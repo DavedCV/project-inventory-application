@@ -44,6 +44,16 @@ router.get("/item/:id", itemController.getById);
 // GET all categories catalog
 router.get("/category", categoryController.getAll);
 
+// GET to delete a category
+router.get("/category/delete/:id", categoryController.deleteGet);
+// POST to delete a category
+router.post("/category/delete/:id", categoryController.deletePost);
+
+// GET create a category
+router.get("/category/create", categoryController.createGet);
+// POST create a category
+router.post("/category/create", categoryController.createPost);  
+
 // Export router ---------------------------------------------------------------
 
 module.exports = router;
