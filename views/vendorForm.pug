@@ -1,0 +1,28 @@
+extends layout 
+
+block section
+  h2 Vendors
+  ul 
+    li 
+      a(href="/catalog/vendor") All Vendors
+    li
+      a(href="/catalog/vendor/create") Create New Vendor
+
+block content 
+  div(class="content")
+    h2 #{title}
+    form(method="POST")
+      ul 
+        li 
+          label(for="name") Name:
+          input(type="text" name="name", required, value=(vendor ? vendor.name : ""))
+        li 
+          label(for="description") Description:
+          textarea(name="description", required) #{vendor ? vendor.description : ""}
+
+      button(type="submit") Vendor Ready
+
+      if erros    
+        ul 
+          each error in errors
+            li= error.msg

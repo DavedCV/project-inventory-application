@@ -4,9 +4,9 @@ block section
   h2 Vendors
   ul 
     li 
-      a(href="/catalog/category") All Vendors
+      a(href="/catalog/vendor") All Vendors
     li
-      a(href="/catalog/category/create") Create New Vendor
+      a(href="/catalog/vendor/create") Create New Vendor
 
 block content
   div(class="vendors")
@@ -21,7 +21,7 @@ block content
               p #[strong Description]: #{vendor.description}
 
               div(class="vendor-card-actions")
-                a(href="/catalog/category/update/" + vendor._id) 
+                a(href="/catalog/vendor/update/" + vendor._id) 
                   i(class="fa-solid fa-pen-to-square")
-                a(href="/catalog/category/delete/" + vendor._id) 
+                a(href="/catalog/vendor/delete/" + vendor._id) 
                   i(class="fa-solid fa-trash")
