@@ -1,0 +1,20 @@
+extends layout 
+
+block section
+  h2 Vendors
+  ul 
+    li 
+      a(href="/catalog/vendor") All Vendors
+    li
+      a(href="/catalog/vendor/create") Create New Vendor
+
+block content 
+  div(class="content")
+    h2 #{title}
+    div(class="details")
+      h2 #{vendor.name}
+      if vendor 
+        p #[strong Name: ] #{vendor.name}
+        p #[strong Description: ] #{vendor.description}
+      else 
+        p #[strong No vendor found.]

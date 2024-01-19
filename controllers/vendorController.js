@@ -50,8 +50,35 @@ exports.deletePost = asyncHandler(async (req, res) => {
   }
 });
 
-exports.updateGet = asyncHandler(async (req, res) => {});
+exports.updateGet = asyncHandler(async (req, res) => {
+  const vendorId = req.params.id;
 
-exports.updatePost = asyncHandler(async (req, res) => {});
+  const vendor = await Vendor.findById(vendorId).exec();
 
-exports.getById = asyncHandler(async (req, res) => {});
+  res.render("vendorForm", {
+    title: "Update Vendor",
+    vendor,
+  });
+});
+
+exports.updatePost = asyncHandler(async (req, res) => {
+  const vendorId = req.params.id;
+  const vendor = new Vendor({
+    name: req.params.name,
+    description: req.params.description,
+    _id: vendorId,
+  });
+
+  await Vendor.findByIdAndUpdate(vendorId, vendor, {});
+  res.redirect(vendor.url);
+});
+
+exports.getById = asyncHandler(async (req, res) => {
+  const vendorId = req.params.id;
+  const vendor = await Vendor.findById(vendorId).exec();
+
+  res.render("vendorDetails", {
+    title: "Vendor Details",
+    vendor,
+  });
+});
